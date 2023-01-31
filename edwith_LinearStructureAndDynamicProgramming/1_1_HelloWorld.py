@@ -1,4 +1,10 @@
-def main():
+'''
+This is 'Procedure-oriented' Hello World code.
+Meaning, code has only functions.
+
+'''
+
+def main():    #function
     print ("Hello, world")
     print ("This program computes the average of two exam scores.")
 
@@ -6,5 +12,4 @@ def main():
     average = (int(score1) + int(score2)) / 2.0
 
     print("The average of the scores is: ", average)
-
 main()
