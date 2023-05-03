@@ -1,2 +1,2 @@
 # CodeExercising
-Exercising the codes from the lessons I took
+Code practices from the lessons I took
