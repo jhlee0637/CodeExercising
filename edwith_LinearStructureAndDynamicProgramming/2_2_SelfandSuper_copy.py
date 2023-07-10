@@ -23,16 +23,16 @@ class Mother(object):
 
 class Child(Father, Mother):
     strName = "Moon"
-    def __init__(self, paramName, paramHome): #when the instance is created, two variables coming after the class name will be the parameters
+    def __init__(self, paramName, paramHome): #when an instance is created, two arguments will be 'pramName', 'paramHome'
         super(Child, self).__init__(paramHome) #bring the 'paramHome' from the superclass 'Father'
         self.strName = paramName
         print("Child is created")
     def doRunning(self):
         print("Fast")
 
-me = Child("Sun", "Universe") #instance created
-me.doFatherThing()
-me.doMotherThing()
-me.doRunning()
-print(me.strHomeTown)
-print(me.strName)
+me = Child("Sun", "Universe") #Father is created, Child is created
+me.doFatherThing() #Father's action
+me.doMotherThing() #Mother's action
+me.doRunning() #Fast
+print(me.strHomeTown) #Universe
+print(me.strName) #Sun
