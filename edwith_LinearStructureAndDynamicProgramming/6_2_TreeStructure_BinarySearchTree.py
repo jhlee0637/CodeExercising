@@ -5,6 +5,7 @@ Each node from BST is built within two next nodes, as like the tree node we just
 Let's implement BST with the several operations(insert, delete, search, travse, ...)
 '''
 from ImportOnly.TreeNode import TreeNode
+from queue import Queue
 
 class BinarySearchTree:
     root = None
@@ -112,12 +113,56 @@ class BinarySearchTree:
         if node.getLHS() is None:
             return node
         return self.findMin(node.getLHS())
-
-    def traverseLevelOrder(self):
-        pass
-    def traverseInOrder(self, node = None):
-        pass
-    def traversePreOrder(self, node = None):
-        pass
-    def traversePostOrder(self, node = None):
-        pass
+    
+    '''
+    Tree traversing: Tree structure has several ways of traversing
+        Breadth first traverse: 1) Queue-based lavel-order traverse
+        Depth first traverse: 1) Pre-order traverse, 2) In-order traverse, 3) Post-order traverse
+    '''
+    def traverseLevelOrder(self): #Breaadth first traverse
+        ret = []
+        Q = Queue()
+        Q.enqueue(self.root)
+        while not Q.isEmpty(): #enqueue the root while until queue is empty
+            node = Q.dequeue()
+            if node is None:
+                continue
+            ret.append(node.getValue())
+            if node.getLHS() is not None: #if current's LHS exist -> enqueue current LHS
+                Q.enqueue(node.getLHS()) 
+            if node.getRHS() is not None: #if current's RHS exist -> enqueue current RHS
+                Q.enqueue(node.getRHS())
+        return ret
+    
+    def traverseInOrder(self, node = None): #In-order traverse
+        if node is None: #Recursion -> need exigt
+            node = self.root
+        ret = []
+        if node.getLHS() is not None: #Put LHS first
+            ret = ret + self.traverseInOrder(node.getLHS())
+        ret.append(node.getValue()) #Put current second
+        if node.getRHS() is not None: #Put RHS last
+            ret = ret + self.traverseInOrder(node.getRHS())
+        return ret
+    
+    def traversePreOrder(self, node = None): #Pre-order traverse
+        if node is None: #Recursion -> need exigt
+            node = self.root
+        ret = []
+        ret.append(node.getValue()) #Put current first
+        if node.getLHS() is not None: #Put LHS second
+            ret = ret + self.traversePreOrder(node.getLHS())
+        if node.getRHS() is not None: #Put RHS last
+            ret = ret + self.traversePreOrder(node.getRHS())
+        return ret
+    
+    def traversePostOrder(self, node = None): #Post-order traverse
+        if node is None: #Recursion -> need exigt
+            node = self.root
+        ret = []
+        if node.getLHS() is not None: #Put LHS first
+            ret = ret + self.traversePostOrder(node.getLHS())
+        if node.getRHS() is not None: #Put RHS second
+            ret = ret + self.traversePostOrder(node.getRHS())
+        ret.append(node.getValue()) #Put current last
+        return ret
