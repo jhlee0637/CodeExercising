@@ -116,10 +116,10 @@ class BinarySearchTree:
     
     '''
     Tree traversing: Tree structure has several ways of traversing
-        Breadth first traverse: 1) Queue-based lavel-order traverse
+        Breadth first traverse: 1) Queue-based level-order traverse
         Depth first traverse: 1) Pre-order traverse, 2) In-order traverse, 3) Post-order traverse
     '''
-    def traverseLevelOrder(self): #Breaadth first traverse
+    def traverseLevelOrder(self): #Breadth first traverse
         ret = []
         Q = Queue()
         Q.enqueue(self.root)
