@@ -7,12 +7,12 @@ class Stack(ProductionList):
     def add(self, Object):
         # Problem 2. complete the add function of Stack
         # remember Stack has LIFO characteristics
-        self.List.addFirst(object)
+        self.List.addFirst(Object)
 
     def get(self):
         # Problem 2. complete the remove function of Stack
         # remember Stack has LIFO characteristics
-        node = self.List.getFirst()
+        node = self.List.removeFirst()
         return node
 
     def getSize(self):

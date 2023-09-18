@@ -43,8 +43,8 @@ class ProductionList(PlanNode):
         # Problem 1. complete the add first function of a doubly linked list
         # 'node' at the first of the linked list
         nodeFirst = self.nodeHead.getNextNode()
-        nodeFirst.setPrevNode(node)
         node.setNextNode(nodeFirst)
+        nodeFirst.setPrevNode(node)
         node.setPrevNode(self.nodeHead)
         self.nodeHead.setNextNode(node)
 
@@ -74,7 +74,7 @@ class ProductionList(PlanNode):
         node = self.nodeHead
         cnt = 0
         while node.getNextNode().strSerialNumber != 'tail':
-            node = node.nextNode()
+            node = node.getNextNode()
             cnt = cnt + 1
         return cnt
 
